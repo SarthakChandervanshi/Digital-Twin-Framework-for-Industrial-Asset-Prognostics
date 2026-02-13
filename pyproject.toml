@@ -1,0 +1,22 @@
+[project]
+name = "digital-twin-framework-for-industrial-asset-prognostics"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Sarthak Chandervanshi",email = "54674615+SarthakChandervanshi@users.noreply.github.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy (>=2.4.2,<3.0.0)",
+    "pandas (>=3.0.0,<4.0.0)",
+    "plotly (>=6.5.2,<7.0.0)",
+    "nbformat (>=4.2.0)",
+    "scipy (>=1.17.0,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
