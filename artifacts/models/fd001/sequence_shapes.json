@@ -1,0 +1,6 @@
+{
+  "seq_len": 30,
+  "n_features": 66,
+  "n_test_windows": 10196,
+  "n_test_engines": 100
+}

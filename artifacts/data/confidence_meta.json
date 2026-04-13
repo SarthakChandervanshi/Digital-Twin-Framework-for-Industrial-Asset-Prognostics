@@ -1,0 +1,5 @@
+{
+  "confidence_formula": "exp(-width / k)",
+  "k": 38.40505599975586,
+  "k_definition": "median of (rul_high - rul_low) over last-window-per-engine rows on test"
+}

@@ -1,0 +1,13 @@
+{
+  "scope": "last_window_per_test_engine",
+  "n_engines": 100,
+  "RMSE": 12.510066,
+  "R2": 0.902544,
+  "NASA_score": 274.41338,
+  "within_10_pct": 68.0,
+  "within_20_pct": 88.0,
+  "weighted_MAE": 7.217562,
+  "weighted_MAE_definition": "weights = 3.0 if y_true <= 20 else 1; weighted_MAE = sum(weights * |error|) / sum(weights)",
+  "coverage": 0.83,
+  "mean_interval_width": 32.859956
+}
