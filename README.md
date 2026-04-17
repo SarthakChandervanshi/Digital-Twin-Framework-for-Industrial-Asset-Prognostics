@@ -66,14 +66,14 @@ flowchart TD
     D --> E[Scaling - StandardScaler fit on train]
     E --> F[Windowing - SEQ_LEN = 30]
     F --> G[Stacked LSTM backbone]
-    G --> H1[Quantile head q0.1 - rul_low]
-    G --> H2[Quantile head q0.5 - rul_mid]
-    G --> H3[Quantile head q0.9 - rul_high]
-    H1 --> I[Prediction interval - width = high - low]
-    H2 --> J[Point metrics - RMSE, R2, NASA score]
+    G --> H1[Quantile head q0.1 gives rul_low]
+    G --> H2[Quantile head q0.5 gives rul_mid]
+    G --> H3[Quantile head q0.9 gives rul_high]
+    H1 --> I[Prediction interval width equals high minus low]
+    H2 --> J[Point metrics RMSE R2 NASA score]
     H3 --> I
-    I --> K[Confidence score - exp(-width / k)]
-    G --> L[SHAP on median head - global feature importance]
+    I --> K[Confidence score computed from interval width]
+    G --> L[SHAP on median head for global feature importance]
 ```
 
 Architecture notes:
@@ -102,6 +102,17 @@ From `artifacts/data/metrics.json` (scope: `last_window_per_test_engine`, `n_eng
 - **Mean interval width:** `32.859956`
 - **Within 10%:** `68.0`
 - **Within 20%:** `88.0`
+
+## Literature comparison (FD001)
+
+The table below provides a practical comparison on FD001. Values from literature are taken from source-reported settings, so this should be read as a **reference comparison** rather than a perfectly controlled head-to-head benchmark.
+
+| Rank | Model / source | NASA score (lower better) | RMSE (lower better) | Status | Link |
+|---|---|---:|---:|---|---|
+| 1 | Attention-LSTM (PHM Society) | 200.00 | 12.33 | SOTA | [Paper](https://papers.phmsociety.org/index.php/ijphm/article/download/4274/2620) |
+| 2 | Quantile LSTM + SHAP (this project) | 274.41 | 12.51 | Proposed | [Live dashboard](https://rul-dashboard-app.vercel.app/) |
+| 3 | CAE-LSTM (Scientific Reports) | 282.38 | 14.44 | SOTA | [Paper](https://www.nature.com/articles/s41598-025-09155-z) |
+| 4 | Stacked LSTM (JOETEX) | 311.20 | 15.22 | Baseline | [Paper](https://shmpublisher.com/index.php/joetex/article/download/585/317/3730) |
 
 ## Key artifacts
 
