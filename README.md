@@ -56,6 +56,34 @@ Core files are expected under `data/CMAPSSData/`:
 6. **Interpretability**
   - global SHAP on median head
 
+## Pipeline and model architecture
+
+```mermaid
+flowchart TD
+    A[NASA C-MAPSS FD001 - train/test sequences] --> B[Preprocessing - RUL target cap and sensor cleanup]
+    B --> C[Smoothing - 1D Kalman per engine/sensor]
+    C --> D[Feature engineering - trend tr_*, rate rc_*, rolling rs_*]
+    D --> E[Scaling - StandardScaler fit on train]
+    E --> F[Windowing - SEQ_LEN = 30]
+    F --> G[Stacked LSTM backbone]
+    G --> H1[Quantile head q0.1 - rul_low]
+    G --> H2[Quantile head q0.5 - rul_mid]
+    G --> H3[Quantile head q0.9 - rul_high]
+    H1 --> I[Prediction interval - width = high - low]
+    H2 --> J[Point metrics - RMSE, R2, NASA score]
+    H3 --> I
+    I --> K[Confidence score - exp(-width / k)]
+    G --> L[SHAP on median head - global feature importance]
+```
+
+Architecture notes:
+
+- **Input tensor:** `(batch, 30, n_features)` with engineered features.
+- **Core model:** stacked LSTM layers learn temporal degradation dynamics.
+- **Output heads:** three quantile heads (`0.1, 0.5, 0.9`) provide uncertainty-aware RUL.
+- **Training loss:** pinball (quantile) loss across all heads.
+- **Decision-facing outputs:** low/median/high RUL, interval width, confidence, and SHAP explanations.
+
 For narrative details, see:
 
 - `artifacts/docs/problem.md`
