@@ -1,0 +1,11 @@
+{
+  "RMSE": 12.510066,
+  "NASA_score": 274.41338,
+  "R2": 0.902544,
+  "coverage": 0.83,
+  "mean_interval_width": 32.859956,
+  "within_10_pct": 68.0,
+  "within_20_pct": 88.0,
+  "n_engines": 100,
+  "scope": "last_window_per_test_engine"
+}

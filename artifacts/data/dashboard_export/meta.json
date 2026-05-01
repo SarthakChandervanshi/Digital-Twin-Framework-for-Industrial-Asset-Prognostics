@@ -1,0 +1,34 @@
+{
+  "model_version": "fd001_quantile_lstm",
+  "dataset": "NASA C-MAPSS FD001",
+  "generated_at": "2026-04-23T21:02:24.772689+00:00",
+  "source_paths": {
+    "metrics": "/Users/sarthakchandervanshi/Desktop/Required/D Drive/Masters Data Science/Semesters/Semester 4/Digital-Twin-Framework-for-Industrial-Asset-Prognostics/artifacts/data/metrics.json",
+    "predictions": "/Users/sarthakchandervanshi/Desktop/Required/D Drive/Masters Data Science/Semesters/Semester 4/Digital-Twin-Framework-for-Industrial-Asset-Prognostics/artifacts/data/predictions.json",
+    "shap_global": "/Users/sarthakchandervanshi/Desktop/Required/D Drive/Masters Data Science/Semesters/Semester 4/Digital-Twin-Framework-for-Industrial-Asset-Prognostics/artifacts/data/shap_global.json",
+    "engine_series_dir": "/Users/sarthakchandervanshi/Desktop/Required/D Drive/Masters Data Science/Semesters/Semester 4/Digital-Twin-Framework-for-Industrial-Asset-Prognostics/dashboard/public/data/engine_series",
+    "shap_local_dir": "/Users/sarthakchandervanshi/Desktop/Required/D Drive/Masters Data Science/Semesters/Semester 4/Digital-Twin-Framework-for-Industrial-Asset-Prognostics/dashboard/public/data/shap_local",
+    "raw_test_fd001": "/Users/sarthakchandervanshi/Desktop/Required/D Drive/Masters Data Science/Semesters/Semester 4/Digital-Twin-Framework-for-Industrial-Asset-Prognostics/data/CMAPSSData/test_FD001.txt"
+  },
+  "quantiles": [
+    0.1,
+    0.5,
+    0.9
+  ],
+  "seq_len": 30,
+  "n_features": 66,
+  "risk_tier_rule": {
+    "high": "rul_mid <= 33rd percentile AND width >= 67th percentile",
+    "medium": "rul_mid <= median OR width >= median",
+    "low": "otherwise"
+  },
+  "files": [
+    "model_metrics.json",
+    "fleet_predictions.csv",
+    "shap_global.csv",
+    "engine_timeseries.csv",
+    "shap_local.csv",
+    "raw_engine_timeseries.csv",
+    "meta.json"
+  ]
+}

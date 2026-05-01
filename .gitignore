@@ -6,7 +6,7 @@
 *.swo
 *~
 tmp/
-temp/
+/temp/
 .cache/
 
 # OS
@@ -36,3 +36,6 @@ env/
 # Logs
 *.log
 logs/
+
+# Node
+node_modules/
