@@ -10,6 +10,7 @@ Data-driven prognostics pipeline for Remaining Useful Life (RUL) estimation on N
 ## Live project
 
 - **Dashboard (live):** [https://rul-dashboard-app.sarthakchandervanshi.uk/](https://rul-dashboard-app.sarthakchandervanshi.uk/)
+- **Slides (PDF):** [open or download](./assets/Presentation1.pdf)
 
 ![Live dashboard preview](./assets/live-dashboard-preview.png)
 
