@@ -11,19 +11,7 @@ Data-driven prognostics pipeline for Remaining Useful Life (RUL) estimation on N
 
 - **Dashboard (live):** [https://rul-dashboard-app.sarthakchandervanshi.uk/](https://rul-dashboard-app.sarthakchandervanshi.uk/)
 
-<p align="center">
-  <iframe
-    src="https://rul-dashboard-app.sarthakchandervanshi.uk/"
-    title="Live RUL dashboard"
-    width="100%"
-    height="520"
-    style="max-width: 960px; border: 1px solid #d0d7de; border-radius: 8px;"
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"
-  ></iframe>
-</p>
-
-<p align="center"><sub>Embedded preview of the deployed app (works in many local Markdown previews). On <a href="https://github.com/">GitHub</a>, README files hide <code>iframe</code> embeds for security — use the dashboard link above or <a href="https://rul-dashboard-app.sarthakchandervanshi.uk/">open it in a new tab</a>.</sub></p>
+![Live dashboard preview](./assets/live-dashboard-preview.png)
 
 ## Project objective
 
