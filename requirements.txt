@@ -1,0 +1,17 @@
+# Mirrors [project] dependencies in pyproject.toml. Python >=3.12.
+numpy>=2.4.2,<3.0.0
+pandas>=3.0.0,<4.0.0
+plotly>=6.5.2,<7.0.0
+nbformat>=4.2.0
+scipy>=1.17.0,<2.0.0
+scikit-learn>=1.8.0,<2.0.0
+xgboost>=3.2.0,<4.0.0
+tqdm>=4.67.3,<5.0.0
+lightgbm>=4.6.0,<5.0.0
+tensorflow>=2.20.0,<3.0.0
+salib>=1.5.2,<2.0.0
+optuna>=4.8.0,<5.0.0
+shap>=0.51.0,<0.52.0
+tf2onnx>=1.17.0,<2.0.0
+onnx>=1.21.0,<2.0.0
+onnxruntime>=1.24.4,<2.0.0

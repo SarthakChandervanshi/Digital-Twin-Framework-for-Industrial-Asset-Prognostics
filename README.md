@@ -9,7 +9,7 @@ Data-driven prognostics pipeline for Remaining Useful Life (RUL) estimation on N
 
 ## Live project
 
-- **Dashboard (live):** [https://rul-dashboard-app.vercel.app/](https://rul-dashboard-app.vercel.app/)
+- **Dashboard (live):** [https://rul-dashboard-app.sarthakchandervanshi.uk/](https://rul-dashboard-app.sarthakchandervanshi.uk/)
 
 ![Live dashboard preview](./assets/live-dashboard-preview.png)
 
@@ -110,7 +110,7 @@ The table below provides a practical comparison on FD001. Values from literature
 | Rank | Model / source | NASA score (lower better) | RMSE (lower better) | Status | Link |
 |---|---|---:|---:|---|---|
 | 1 | Attention-LSTM (PHM Society) | 200.00 | 12.33 | SOTA | [Paper](https://papers.phmsociety.org/index.php/ijphm/article/download/4274/2620) |
-| 2 | Quantile LSTM + SHAP (this project) | 274.41 | 12.51 | Proposed | [Live dashboard](https://rul-dashboard-app.vercel.app/) |
+| 2 | Quantile LSTM + SHAP (this project) | 274.41 | 12.51 | Proposed | [Live dashboard](https://rul-dashboard-app.sarthakchandervanshi.uk/) |
 | 3 | CAE-LSTM (Scientific Reports) | 282.38 | 14.44 | SOTA | [Paper](https://www.nature.com/articles/s41598-025-09155-z) |
 | 4 | Stacked LSTM (JOETEX) | 311.20 | 15.22 | Baseline | [Paper](https://shmpublisher.com/index.php/joetex/article/download/585/317/3730) |
 
@@ -139,39 +139,41 @@ The table below provides a practical comparison on FD001. Values from literature
 |  |- fd001.ipynb
 |  `- model/fd001/
 |- pyproject.toml
+|- requirements.txt
 `- README.md
 ```
 
-## Environment setup
+## Set up the project
 
-This project uses Poetry (`pyproject.toml`).
+Requires Python **3.12 or newer** (see `pyproject.toml`). Dependencies are listed in `pyproject.toml` (Poetry) and mirrored for pip in **`requirements.txt`**.
+
+Pick Poetry or pip; both resolve the same direct dependencies.
+
+### Option A — Poetry
 
 ```bash
 poetry install
 poetry shell
 ```
 
-Python requirement: `>=3.12`
+### Option B — pip and a virtual environment
 
-## Reproduce pipeline (notebook-driven)
+```bash
+python3.12 -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install --upgrade pip
+pip install -r requirements.txt
+```
 
-Primary workflow is in:
+### Dataset layout
 
-- `notebooks/fd001.ipynb`
+Place the NASA C-MAPSS FD001 text files under `data/CMAPSSData/` (`train_FD001.txt`, `test_FD001.txt`, `RUL_FD001.txt`) before training or preprocessing steps in the notebook.
 
-Typical execution:
+## How to run
 
-1. open the notebook
-2. run all cells in order
-3. export artifacts to `artifacts/data/` and model outputs to `notebooks/model/fd001/`
-
-## Dashboard usage
-
-- Use the live app for full presentation and interaction:
-  - [https://rul-dashboard-app.vercel.app/](https://rul-dashboard-app.vercel.app/)
-- Dashboard payloads are precomputed and stored in:
-  - `dashboard/public/data/engine_series/`
-  - `dashboard/public/data/shap_local/`
+1. **Complete setup** — follow [Set up the project](#set-up-the-project) and confirm the dataset files are present.
+2. **Reproduce training and artifacts** — open `notebooks/fd001.ipynb` in Jupyter, VS Code, or Cursor with your chosen kernel/venv activated, then run all cells top to bottom. The notebook refreshes artifacts under `artifacts/data/`, writes model files under `notebooks/model/fd001/`, and can refresh dashboard JSON under `dashboard/public/data/` when those export cells are run.
+3. **View the dashboard** — use the hosted app: [https://rul-dashboard-app.sarthakchandervanshi.uk/](https://rul-dashboard-app.sarthakchandervanshi.uk/). This repository stores the precomputed dashboard payloads (for example `dashboard/public/data/engine_series/` and `dashboard/public/data/shap_local/`) that back that experience; the interactive UI is deployed separately from this repo.
 
 ## Why intervals + SHAP
 
